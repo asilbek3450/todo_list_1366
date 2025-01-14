@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+
+      <div id="myDIV" class="header">
+          <h2>My To Do List</h2>
+          <input name="newtask" type="text" id="myInput" placeholder="Yangi vazifa">
+        <button type="submit" class="addBtn">Yangi qo'shish</button>
+        </div>
+
+    </form>
+      
+      <ul id="myUL">
+        
+        {% for t in tasks %}
+        <li>{{ t.title }}     | {{ t.created_at }}</li>
+        {% endfor %}
+        <li class="checked">Pay bills</li>
+
+      </ul>
+      
+  <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
